@@ -3,8 +3,6 @@
 <!--[if !(IE)]><!-->
 <html lang="en" class="no-js">
 <!--<![endif]-->
-
-
 <head>
 	<title>Dashboard | KingAdmin - Admin Dashboard</title>
 	<meta charset="utf-8">
@@ -16,7 +14,7 @@
         {!!Html::style('assets/css/bootstrap.min.css')!!}
         {!!Html::style('assets/css/font-awesome.min.css')!!}
         {!!Html::style('assets/css/main.css')!!}
-        {!!Html::style('assets/css/my-custom-styles.css')!!}
+        {!!Html::style('assets/css/skins/teal.css')!!}
 	<!--[if lte IE 9]>
 		<link href="assets/css/main-ie.css" rel="stylesheet" type="text/css"/>
 		<link href="assets/css/main-ie-part2.css" rel="stylesheet" type="text/css"/>
@@ -80,23 +78,29 @@
 							<!-- logged user and the menu -->
 							<div class="logged-user">
 								<div class="btn-group">
-									<a href="#" class="btn btn-link dropdown-toggle" data-toggle="dropdown">
-                                                                            {!!Html::image('assets/img/user-avatar.png','User Avatar')!!}   
-										<span class="name">Stacy Rose</span> <span class="caret"></span>
+									<a href="#" class=" dropdown-toggle" data-toggle="dropdown">
+                                                                            {!!Html::image('assets/img/user-avatar.png','User Avatar')!!}
+                                                                            <span class="name text-white">{{ Auth::user()->name." ".Auth::user()->app }}</span> <span class="caret text-white"></span>
 									</a>
 									<ul class="dropdown-menu" role="menu">
 										<li>
 											<a href="#">
 												<i class="fa fa-user"></i>
-												<span class="text">Profile</span>
+												<span class="text">{{ Auth::user()->name }}</span>
 											</a>
 										</li>
-										<li>
-											<a href="#">
-												<i class="fa fa-power-off"></i>
-												<span class="text">Logout</span>
-											</a>
-										</li>
+                                                                                <li>
+                                                                                    <a href="{{ route('logout') }}"
+                                                                                        onclick="event.preventDefault();
+                                                                                                 document.getElementById('logout-form').submit();">
+                                                                                        <i class="fa fa-power-off"></i>
+                                                                                        <span class="text">Logout</span>
+                                                                                    </a>
+
+                                                                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                                                        {{ csrf_field() }}
+                                                                                    </form>
+                                                                                </li>
 									</ul>
 								</div>
 							</div>
@@ -110,7 +114,7 @@
 		</div>
 		<!-- END TOP BAR -->
 		<!-- LEFT SIDEBAR -->
-		<div id="left-sidebar" class="left-sidebar ">
+		<div id="left-sidebar" class="left-sidebar wallpaper-background2">
 			
 			<div class="sidebar-scroll">
                             <!-- main-nav -->
@@ -158,7 +162,7 @@
 			<!-- /main -->
 			<!-- FOOTER -->
 			<footer class="footer">
-				&copy; 2017 The Develovers
+                            <strong class="text-white">&copy; 2018 by JDMR</strong>
 			</footer>
 			<!-- END FOOTER -->
 		</div>
@@ -175,8 +179,8 @@
 <!--	{!!Html::script('demo-style-switcher/assets/js/deliswitch.js')!!}
 	{!!Html::script('assets/js/plugins/stat/jquery.easypiechart.min.js')!!}
 	{!!Html::script('assets/js/plugins/raphael/raphael-2.1.0.min.js')!!}-->
-	{!!Html::script('assets/js/plugins/stat/flot/jquery.flot.min.js')!!}
-	{!!Html::script('assets/js/plugins/stat/flot/jquery.flot.resize.min.js')!!}
+<!--	{!!Html::script('assets/js/plugins/stat/flot/jquery.flot.min.js')!!}
+	{!!Html::script('assets/js/plugins/stat/flot/jquery.flot.resize.min.js')!!}-->
         
         
 <!--        {!!Html::script('assets/js/plugins/stat/flot/jquery.flot.time.min.js')!!}
@@ -190,10 +194,11 @@
         {!!Html::script('assets/js/king-chart-stat.js')!!}
 -->        {!!Html::script('assets/js/king-table.js')!!}<!--
         {!!Html::script('assets/js/king-components.js')!!}-->
-</body>
-@if(!empty($scripts))
+        @if(!empty($scripts))
             @foreach($scripts as $js)
-                <script src="{{url('js/'.$js)}}"></script>
+                <script src="{{url($js)}}"></script>
             @endforeach
         @endif
+</body>
+
 </html>

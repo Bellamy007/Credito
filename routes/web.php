@@ -22,8 +22,10 @@ Route::resource('usuario', 'UserController');
 Route::get('delete/{id}','UserController@deleteUser')->name('usuario.delete');
 
 //rutas login
-
-
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
+
+//rutas creditos
+Route::resource('credito','CreditosController');
+Route::post('infoCliente', 'funcionesCreditos@infoCliente')->name('info.cliente');
+Route::post('combo/criterio', 'funcionesCreditos@comboCriterio')->name('combo.criterio');

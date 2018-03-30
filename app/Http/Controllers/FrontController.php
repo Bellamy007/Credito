@@ -1,13 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
+use Auth;
 
 class FrontController extends Controller
 {
     public function __invoke(){
-        if (!session('status')){
-            return redirect()->route('home');
+        if (Auth::check()) {
+            return redirect('home');
+        }else{
+            return view('auth.login');
         }
-        return view('login');
     }
 }

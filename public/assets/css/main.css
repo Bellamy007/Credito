@@ -61,7 +61,9 @@
     background-color: #464646;
 
 }
-
+.text-white{
+color:white;
+}
 .has-switch:focus {
   border-color: #66afe9;
   outline: 0;
@@ -17478,6 +17480,7 @@ ul.recent-file-list {
   bottom: 0;
   padding: 10px;
   font-size: 0.9em;
-  text-align: center; }
+  text-align: center;
+}
 
 /*# sourceMappingURL=main.css.map */

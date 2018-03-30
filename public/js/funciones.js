@@ -42,3 +42,41 @@ $("#addUser").click(function (e){
             }
     });
 });
+
+/**
+ * Funcion cobo avales, oculta y desoculta valores de avales dependiendo de los clientes
+ */
+
+/**
+ * Funcion info cliente
+ */
+function infoCLiente(url,url2){
+    var x = $("#cliente").val();
+    var token = $("#_token").val();
+     $('#avales').empty().append('whatever');
+         $.ajax({
+            data:{ 'id_cliente' : x , '_token' : token},
+            url:   url,
+            type:  'post',
+            success:  function (response) {
+                    $("#infoCliente").html(response);
+                    }
+            });
+         $.ajax({
+            data:{ 'id_aval' : x , '_token' : token},
+            url:   url2,
+            type:  'post',
+            success:  function (response) {
+                    $("#avales").html(response);
+                    }
+            });
+}
+/**
+ * Calculo pagos por semana
+ */
+function precioPagos(){
+    var cantidad = $("#cantidad").val();
+    var resultado = (cantidad * 7.8)/100;
+    var res_final =(resultado.toFixed(2));
+    $("#pagos").val(res_final);
+}

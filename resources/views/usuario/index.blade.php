@@ -1,4 +1,4 @@
-@extends('template.principal',$scripts=['funciones.js'])
+@extends('template.principal',$scripts=['js/funciones.js'])
 @section('content')
 <div class="widget-header">
     <h3><i class="fa fa-table"></i>Usuarios</h3> &nbsp; &nbsp;

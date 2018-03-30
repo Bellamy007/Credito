@@ -28,8 +28,7 @@ class User extends Authenticatable
     ];
     
     public function setPassworAttribute($psw){
-        if(!empty($psw)){
-         return       $this->attributes['password'] = \Hash::make($psw);
-        }
+        return  $this->attributes['password'] = \Hash::make($psw);
+        
     }
 }

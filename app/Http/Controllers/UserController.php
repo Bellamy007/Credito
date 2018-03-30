@@ -36,8 +36,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-         $auth = new User();
-         $psw = $auth->setPassworAttribute($request['password']);
+        $psw = new setPassworAttribute($request['password']);
         User::create([
             'name'=> $request['name'],
             'app'=> $request['app'],
